@@ -2,6 +2,7 @@ import './styles/style.scss';
 import './styles/transition.scss';
 
 const NUM_TRANSITEMS = 5;
+let index = 0;
 
 const container = document.querySelector('.home-container');
 const transBtn = document.querySelector('.trans-btn');
@@ -19,11 +20,39 @@ function initTransition() {
 }
 
 function createTransItems() {
-	for (let index = 0; index < NUM_TRANSITEMS; index++) {
-		let item = document.createElement('div');
-		item.className = `item-${index + 1}`;
-		console.log(item);
-		container.appendChild(item);
+	if (index <= NUM_TRANSITEMS) {
+		setTimeout(() => {
+			let item = document.createElement('div');
+			item.className = `item-${index + 1}`;
+			item.classList.add('item');
+			console.log(item);
+			container.appendChild(item);
+			index++;
+			createTransItems();
+		}, 200);
+	} else {
+		index = 0;
+		dissolveItems();
+		// toggleTransBtnText();
+	}
+}
+
+function dissolveItems() {
+	let items = document.querySelectorAll('.item');
+	console.log(items);
+
+	if (index <= NUM_TRANSITEMS) {
+		setTimeout(() => {
+			items[index].classList.remove(`item-${index + 1}`);
+			console.log(items[index]);
+			index++;
+			dissolveItems();
+		}, 200);
+	} else {
+		index = 0;
+		toggleTransBtnText();
+		console.log(transBtn.textContent);
+		console.log(index);
 	}
 }
 
