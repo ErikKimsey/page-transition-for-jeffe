@@ -1,21 +1,22 @@
-import { hello, tes } from './scripts/import-example';
-
-import './styles/style.css';
 import './styles/style.scss';
-import './styles/style.sass';
+import './styles/transition.scss';
 
-hello();
+const NUM_TRANSITEMS = 5;
+const container = document.querySelector('.home-container');
+const transBtn = document.querySelector('.trans-btn');
 
-async function run() {
-  const value = await tes();
-  console.log(value)
+function initTransition() {
+	console.log('init trans');
+	createTransItems();
 }
 
-run();
+function createTransItems() {
+	for (let index = 0; index < NUM_TRANSITEMS; index++) {
+		let item = document.createElement('div');
+		item.className = `item-${index + 1}`;
+		console.log(item);
+		container.appendChild(item);
+	}
+}
 
-async function lazyLoadExample() {
-  const { lazyLoad } = await import('./scripts/lazy-load-example');
-  lazyLoad().then(res => console.log(res));
-};
-
-document.querySelector("#lazy-load").addEventListener('click', lazyLoadExample);
+transBtn.onclick = initTransition;

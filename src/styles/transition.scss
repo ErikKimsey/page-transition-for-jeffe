@@ -1,0 +1,14 @@
+@import './style.scss';
+
+$numOfItems : 5;
+$colors: $black, $offwhite, $green, $pink, $violet;
+
+@for $i from 1 to $numOfItems+1 {
+  .item-#{$i} {
+    position: static;
+    height:400px;
+    width:100px;
+    background-color: nth($colors, $i);
+  }
+}
+

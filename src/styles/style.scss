@@ -1,5 +1,12 @@
 /* Here are example using scss */
 
+/* Color Theme Swatches in Hex */
+$black: #000000;
+$offwhite: #E6FFF6;
+$green: #0CE81C;
+$pink: #EB46D5;
+$violet: #780097;
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -24,35 +31,18 @@ body {
   }
 }
 
-.header {
-  h1 {
-    font-size: 3.5rem;
-  }
-}
-
-.example {
-  display: flex;
+.home-container {
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-flow: row;
   justify-content: center;
-
-  &-style,
-  &-lazy-load {
-    margin: 3rem 2rem;
+  align-items: center;
+  .trans-btn {
+    width:133px;
+    height:44px;
+    &:hover {
+      cursor: pointer;
+    }
   }
-}
-
-.from-scss {
-  color: #0096FF;
-}
-
-.link {
-  color: #61dafb;
-  font-size: 2rem;
-  margin-top: 3rem;
-}
-
-#lazy-load {
-  padding: 1rem 1.5rem;
-  border: 0;
-  border-radius: 10rem;
-  outline: none;
 }
